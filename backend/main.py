@@ -1,5 +1,6 @@
 from fastapi import FastAPI, UploadFile, File, Form
 import spacy
+import spacy.cli
 import re
 from fastapi.middleware.cors import CORSMiddleware
 from pdfminer.high_level import extract_text
@@ -15,6 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+spacy.cli.download("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 
 
